@@ -1,0 +1,14 @@
+target/
+*.jar
+*.class
+.idea/
+*.iml
+.vscode/
+credentials.json
+*.json.key
+service-account-*.json
+.env
+*.env.local
+.DS_Store
+*.log
+logs/

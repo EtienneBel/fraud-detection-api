@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: fraud-detection-api
+  cloud:
+    gcp:
+      project-id: ${GCP_PROJECT_ID:fraud-detection-workshop}
+
+gcp:
+  project-id: ${GCP_PROJECT_ID:fraud-detection-workshop}
+  region: ${GCP_REGION:us-central1}
+  vertex-ai:
+    endpoint-id: ${VERTEX_AI_ENDPOINT_ID:your-endpoint-id}
+  pubsub:
+    topic: ${PUBSUB_TOPIC:fraud-transactions}
+  bigquery:
+    dataset: ${BQ_DATASET:fraud_detection}
+    table: ${BQ_TABLE:prediction_logs}
+
+server:
+  port: ${PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.gdg.fraud: INFO
+    com.google.cloud: WARN
