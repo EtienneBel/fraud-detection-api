@@ -130,6 +130,39 @@ gcloud run deploy fraud-detection-api \
   --set-env-vars="GCP_PROJECT_ID=${PROJECT_ID},GCP_REGION=${REGION},VERTEX_AI_ENDPOINT_ID=${ENDPOINT_ID}"
 ```
 
+## Screenshots
+
+### Vertex AI Model Evaluation
+
+Model trained on the credit card fraud dataset. Evaluated on Apr 14, 2026 with strong classification metrics.
+
+![Vertex AI Model Evaluation](docs/screenshots/model-evaluation.png)
+
+| Metric | Value |
+|--------|-------|
+| PR AUC | 0.989 |
+| PROC AUC | 0.989 |
+| F1 Score (0.5) | 0.97 |
+| F1-Macro (0.5) | 0.957 |
+| Log Loss | 0.108 |
+
+### Batch Prediction Results (Raw Output)
+
+Raw JSONL output from Vertex AI batch prediction job, showing per-instance prediction scores for fraud (`"1"`) and legitimate (`"0"`) classes.
+
+![Batch Prediction Raw Output](docs/screenshots/batch-prediction-raw.png)
+
+### Batch Prediction Results (Parsed)
+
+Parsed prediction output using a Python one-liner — showing amount, verdict, and confidence for each transaction.
+
+![Batch Prediction Parsed](docs/screenshots/batch-prediction-parsed.png)
+
+```
+Amount: $25.5    --> LEGITIMATE | Legitimate: 99.5% | Fraud:  0.5%
+Amount: $2125.87 --> FRAUD      | Legitimate:  1.5% | Fraud: 98.5%
+```
+
 ## Environment Variables
 
 | Variable | Default | Description |
